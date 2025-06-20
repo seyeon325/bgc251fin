@@ -1,6 +1,6 @@
 const { Responsive } = P5Template;
 
-let mode = "start";
+let mode = 'start';
 let shapes = [];
 let size = 60;
 
@@ -14,8 +14,8 @@ let centerX, centerY;
 let backgroundSound;
 
 function preload() {
-  startImg = loadImage("asset/introimg.png"); // 시작화면 이미지
-  backgroundSound = loadSound("asset/bgm.mp3"); // 배경음악
+  startImg = loadImage('asset/introimg.png'); // 시작화면 이미지
+  backgroundSound = loadSound('asset/bgm.mp3'); // 배경음악
 }
 
 function setup() {
@@ -30,11 +30,11 @@ function setup() {
 }
 
 function draw() {
-  if (mode === "start") {
+  if (mode === 'start') {
     background(255);
     image(startImg, 0, 0, width, height);
     drawStartButton();
-  } else if (mode === "change") {
+  } else if (mode === 'change') {
     background(255);
     image(startImg, 0, 0, width, height);
     fill(330, 90, 100);
@@ -42,14 +42,14 @@ function draw() {
     circleSize += circleSpeed;
 
     if (circleSize > maxCircle) {
-      mode = "real";
+      mode = 'real';
       createShapes();
     }
   } else {
-    if (mode === "dream") {
+    if (mode === 'dream') {
       background(0, 0, 98, 10); // 밝은 잔상
-    } else if (mode === "real") {
-      background(0, 0, 0, 10);  // 어두운 잔상
+    } else if (mode === 'real') {
+      background(0, 0, 0, 10); // 어두운 잔상
     }
 
     for (let i = 0; i < shapes.length; i++) {
@@ -57,30 +57,27 @@ function draw() {
       drawShape(shapes[i]);
     }
   }
-
-  // 필요시 디버깅용 격자
-  // Responsive.drawReferenceGrid('#ffffff');
 }
 
 function drawStartButton() {
-  fill("white");
+  fill('white');
   strokeWeight(3);
   rect(width / 2, height - 120, 240, 60, 12);
   fill(0);
   noStroke();
   textAlign(CENTER, CENTER);
   textSize(20);
-  text("네모의 현실과 꿈", width / 2, height - 120);
+  text('네모의 현실과 꿈 보러가기', width / 2, height - 120);
 }
 
 function mousePressed() {
-  // 오디오 재생: 사용자 클릭 이후에만 허용됨
+  // 오디오 재생: 사용자 클릭 이후
   if (!backgroundSound.isPlaying()) {
     backgroundSound.loop();
     backgroundSound.setVolume(0.5);
   }
 
-  if (mode === "start") {
+  if (mode === 'start') {
     let left = width / 2 - 110;
     let right = width / 2 + 110;
     let top = height - 150;
@@ -99,17 +96,16 @@ function mousePressed() {
     }
 
     if (insideButton === true) {
-      mode = "change";
+      mode = 'change';
       circleSize = 0;
     }
-
-  } else if (mode === "real") {
-    mode = "dream";
+  } else if (mode === 'real') {
+    mode = 'dream';
     for (let i = 0; i < shapes.length; i++) {
       shapes[i].isDream = true;
     }
-  } else if (mode === "dream") {
-    mode = "real";
+  } else if (mode === 'dream') {
+    mode = 'real';
     for (let i = 0; i < shapes.length; i++) {
       shapes[i].x = shapes[i].homeX;
       shapes[i].y = shapes[i].homeY;
@@ -132,7 +128,7 @@ function createShapes() {
         dy: random(-2, 2),
         color: random([20, 50, 180, 250, 320, 100]),
         isDream: false,
-        morph: 0
+        morph: 0,
       };
 
       shape.x = shape.homeX;
@@ -163,7 +159,6 @@ function moveShape(shape) {
 
     shape.morph += 0.01;
     if (shape.morph > 1) shape.morph = 1;
-
   } else {
     let shake = sin(frameCount * 0.05) * 5;
     shape.x = shape.homeX + shake;
