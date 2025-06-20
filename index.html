@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ∨×××× [수정 금지] ××××∨ -->
+    <title></title>
+    <!-- ∧×××× [수정 금지] ××××∧ -->
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+    <link rel="stylesheet" href="./common/p5template/p5template.css" />
+
+    <script src="./common/p5template/responsive.js"></script>
+    <script src="./common/p5template/scroll.js"></script>
+    <script src="./common/p5template/title.js"></script>
+    <script src="./common/p5template/references.js"></script>
+    <script src="./common/p5template/paging.js"></script>
+
+    <script>
+      new P5Template.Scroll();
+
+      // ∨○○○○ [수정 필수] ○○○○∨
+      new P5Template.Title(
+        '《 네모의 현실과 꿈 》― 정해진 틀 안에서 흔들리기, 벗어나기.',
+        '박세연',
+        '2025'
+      );
+
+      // 참고자료 목록
+      const references = [
+        {
+          title: '네모의꿈 - IU (TJ Karaoke)',
+          authors: ['TJ karaoke'],
+          year: '2025',
+          publisher: 'YouTube',
+          url: 'https://youtu.be/5tM9Hdf0CBY?si=e8JTAqwWp5vnLFjK',
+        },
+        {
+          title: '네모의꿈 플래시',
+          authors: ['화이트'],
+          year: '2016',
+          publisher: 'YouTube',
+          url: 'https://youtu.be/r4BgjyPTzLk?si=69OxkuEHjNpEIluk',
+        },
+        {
+          title: 'mouse press - sounds',
+          authors: ['Deepak Kumar'],
+          year: '2025',
+          publisher: 'OpenProcessinInteractive Explorations in p5.js - Behance',
+          url: 'https://www.behance.net/gallery/224326791/Interaction-Coding-in-P5js?tracking_source=search_projects|p5js&l=8',
+        },
+        {
+          title: 'Mouse Interaction with Objects',
+          authors: ['Daniel Shiffman'],
+          year: '2015',
+          publisher: 'The Coding Train - YouTube',
+          url: 'https://youtu.be/TaN5At5RWH8?si=YY0ZnlP1QVvJc6rh',
+        },
+        {
+          title: 'DOM Input (Sliders, Buttons)',
+          authors: ['Daniel Shiffman'],
+          year: '2016',
+          publisher: 'The Coding Train - YouTube',
+          url: 'https://youtu.be/587qclhguQg?si=207VtP3Gyr9EFNbV',
+        },
+        {
+          title: 'Circle Morphing',
+          authors: ['Daniel Shiffman'],
+          year: '2017',
+          publisher: 'The Coding Train - YouTube',
+          url: 'https://youtu.be/u2D4sxh3MTs?si=vmVSOz56Du9Xvz3a',
+        },
+        {
+          title: 'transition effect',
+          authors: ['Ahrayz'],
+          year: '2017',
+          publisher: 'transition effect - p5js',
+          url: 'https://editor.p5js.org/Ahrayz/sketches/ByscQARL-',
+        },
+      ];
+      // ∧○○○○ [수정 필수] ○○○○∧
+
+      new P5Template.References(references);
+      new P5Template.Paging();
+    </script>
+
+    <!-- ∨○○○○ [수정 필수] ○○○○∨ -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/addons/p5.sound.min.js"></script>
+    <script src="./sketches/nemodream.js" defer></script>
+    <!-- ∧○○○○ [수정 필수] ○○○○∧ -->
+  </head>
+  <body>
+    <main id="main">
+      <section
+        id="section-canvas"
+        class="section section--canvas canvas"
+        data-full-width="true"
+      >
+        <div class="container canvas__container">
+          <div id="canvas-container"></div>
+        </div>
+      </section>
+      <section id="section-control" class="section section--control control">
+        <div class="container control__container control__container">
+          <div class="control__label">
+            <div class="control__label__title title"></div>
+            <div class="control__label__author author"></div>
+          </div>
+          <div class="control__paging">
+            <button
+              id="button-prev"
+              class="icon-button control__button control__button--prev"
+              data-icon="arrow_back_ios_new"
+              aria-label="to previous"
+            ></button>
+            <button
+              id="button-next"
+              class="icon-button control__button control__button--next"
+              data-icon="arrow_forward_ios"
+              aria-label="to next"
+            ></button>
+            <button
+              id="button-list"
+              class="icon-button control__button control__button--list"
+              data-icon="grid_view"
+              aria-label="to list"
+            ></button>
+          </div>
+          <div class="control__scroll">
+            <button
+              id="button-scroll"
+              class="icon-button control__button control__button--scroll"
+              data-icon="arrow_drop_down"
+              aria-label="toggle description"
+              data-toward="down"
+            ></button>
+          </div>
+        </div>
+      </section>
+      <section
+        id="section-information"
+        class="section section--information information"
+      >
+        <div class="container information__container">
+          <div class="information__label">
+            <h1 class="information__label__title title"></h1>
+            <h2 class="information__label__author author"></h2>
+          </div>
+          <div class="information__description">
+            <div class="information__description">
+              <p>
+                세상이라는 그리드 위에 놓인 우리는 닮아있지만 엄연히 다르다. 이
+                작업은 같은 틀 안에서 각자 다른 색을 품은 채 흔들리는 존재들을
+                ‘네모’라는 형상에 빗대어 표현한 것이다.
+              </p>
+              <p>
+                현실에서는 도형들이 정해진 그리드 위에서 미세하게 떨리며 자신의
+                자리를 벗어나지 못한 채 움직인다. 하지만 마우스를 클릭하면,
+                도형들은 점점 원으로 변하면서 방향과 속도를 갖고 자유롭게
+                흩어진다.
+              </p>
+              <p>
+                이건 단순한 형태 변화가 아니라, 반복되는 구조에서 벗어나고
+                싶다는 감정선, 그리고 스스로를 찾아가려는 움직임을 담고 있다.
+              </p>
+              <p>
+                나는 ‘네모의 꿈’이라는 노래를 듣고 이 곡이 획일화된 사회를
+                비판하고, 그 속에서도 자신의 본질을 되찾고자 하는 메시지를 담고
+                있다고 해석했다. 그래서 이 감정을 도형의 변화와 움직임을 통해
+                시각적으로 표현하고 싶었다.
+              </p>
+              <p>
+                ‘네모의 꿈’은 향수를 불러일으키는 동시에 누구나 한 번쯤 느껴봤을
+                ‘틀 안에 있는 감각’을 자연스럽게 떠올리게 한다. 도형이라는
+                소재는 그 감정을 직관적으로 전달할 수 있어서 선택하게 되었다.
+              </p>
+              <p>
+                반복되는 현실, 그 안에서 조금씩 흔들리는 도형들, 그리고 꿈
+                속에서 방향도 속도도 다르게 움직이는 모습은 지금 우리가 살아가는
+                구조와 그 안에서의 상상을 담고 있다.
+              </p>
+            </div>
+          </div>
+          <div class="information__reference">
+            <div class="information__reference__wrap">
+              <div class="information__reference__title">참고자료</div>
+              <ol></ol>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
