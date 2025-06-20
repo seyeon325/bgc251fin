@@ -62,6 +62,7 @@ function draw() {
 function drawStartButton() {
   fill('white');
   strokeWeight(3);
+  stroke('magenta');
   rect(width / 2, height - 120, 240, 60, 12);
   fill(0);
   noStroke();
