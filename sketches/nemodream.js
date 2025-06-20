@@ -47,9 +47,9 @@ function draw() {
     }
   } else {
     if (mode === 'dream') {
-      background(0, 0, 98, 10); // 밝은 잔상
+      background(0, 0, 98, 10);
     } else if (mode === 'real') {
-      background(0, 0, 0, 10); // 어두운 잔상
+      background(0, 0, 0, 10);
     }
 
     for (let i = 0; i < shapes.length; i++) {
@@ -71,7 +71,7 @@ function drawStartButton() {
 }
 
 function mousePressed() {
-  // 오디오 재생: 사용자 클릭 이후
+  // 오디오 재생
   if (!backgroundSound.isPlaying()) {
     backgroundSound.loop();
     backgroundSound.setVolume(0.5);
